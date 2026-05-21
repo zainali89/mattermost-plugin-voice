@@ -1,23 +1,106 @@
-div.voice-player {
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 4px;
-  border-radius: 4px;
-  margin: 2px 0;
+.vp-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 2px 0;
+    max-width: 480px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-progress.voice-player-progress {
-  border-radius: 1px;
-  height: 0.4em;
-  padding: 0;
-  width: 80px;
-  margin: 0 8px;
+.vp-playbtn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 15px;
+    padding: 0;
+    transition: transform 0.08s ease, filter 0.12s ease;
 }
 
-button.voice-player-playbutton {
-  padding: 0;
-  background: none;
-  border: none;
-  outline: inherit;
+.vp-playbtn:hover {
+    filter: brightness(1.08);
+}
+
+.vp-playbtn:active {
+    transform: scale(0.97);
+}
+
+.vp-playbtn .fa-play {
+    transform: translateX(1px);
+}
+
+.vp-scrubber {
+    position: relative;
+    flex: 1;
+    height: 20px;
+    cursor: pointer;
+    user-select: none;
+    touch-action: none;
+}
+
+.vp-scrubber-track {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.vp-scrubber-fill {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    height: 4px;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.vp-scrubber-thumb {
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: box-shadow 0.12s ease;
+}
+
+.vp-duration {
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+    min-width: 36px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.vp-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 15px;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    opacity: 0.85;
+    transition: opacity 0.12s ease;
+}
+
+.vp-download:hover,
+.vp-download:focus {
+    opacity: 1;
+    text-decoration: none;
 }
