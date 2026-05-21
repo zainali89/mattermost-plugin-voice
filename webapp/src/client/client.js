@@ -79,6 +79,12 @@ export default class Client {
                     root_id: rootId,
                     message: 'Voice Message',
                     type: 'custom_voice',
+                    // file_ids is required so Mattermost mobile clients (which
+                    // don't load plugin webapp bundles and therefore never
+                    // render the registered `custom_voice` PostType) still get
+                    // a renderable MP3 attachment with their native inline
+                    // audio player.
+                    file_ids: [res.body.file_infos[0].id],
                     props: {
                         fileId: res.body.file_infos[0].id,
                         duration: recording.duration,

@@ -21,3 +21,23 @@ button.voice-player-playbutton {
   border: none;
   outline: inherit;
 }
+
+/*
+ * `file_ids` is set on voice-message posts so Mattermost mobile clients can
+ * render the MP3 attachment (mobile doesn't load plugin webapp bundles so it
+ * never reaches our PostType component). On web the PostType already renders
+ * the audio inline, so the default file-attachment card would be a duplicate.
+ * Scope the hide to posts whose body contains our custom .voice-player so
+ * other file attachments in the channel are unaffected.
+ */
+.post__body:has(.voice-player) .post-image__column,
+.post__body:has(.voice-player) .post-image__columns,
+.post__body:has(.voice-player) [data-testid="fileAttachmentList"],
+.post:has(.voice-player) .post-image__column,
+.post:has(.voice-player) .post-image__columns,
+.post:has(.voice-player) [data-testid="fileAttachmentList"],
+[data-testid="postView"]:has(.voice-player) .post-image__column,
+[data-testid="postView"]:has(.voice-player) .post-image__columns,
+[data-testid="postView"]:has(.voice-player) [data-testid="fileAttachmentList"] {
+  display: none !important;
+}
